@@ -15,6 +15,7 @@ publicado no GitHub Pages.
 | Serviços | `servicos/index.html` | sites, apps e sistemas, e como trabalhamos |
 | Portfólio | `portfolio/index.html` | projetos com filtro por tipo e link para cada um |
 | Contato | `contato/index.html` | WhatsApp e formulário |
+| Sites para restaurantes | `sites-para-restaurantes/index.html` | oferta: o que inclui, como funciona, preço (R$ 790 + R$ 99/mês) e perguntas frequentes |
 
 O cabeçalho e o rodapé se repetem em cada página: uma mudança neles precisa ser feita nos quatro arquivos.
 
