@@ -64,6 +64,8 @@ O site é público, então a chave do serviço de WhatsApp não pode ficar nele.
 Os nomes dos menus da Cloudflare podem mudar com o tempo; o essencial é: criar o Worker, colar o código e
 cadastrar os dois segredos.
 
+**Ativado em 29/10/2026** com o Worker `https://devspace-contato.quartorama.workers.dev/`. No teste, a mensagem chegou alguns minutos depois do envio, e o CallMeBot juntou duas mensagens numa só. Como ele quebra letras acentuadas, o Worker manda o texto sem acentos («formulario», «orcamento»); emojis passam normalmente. Mudou o `worker/contato.js`? Cole de novo em **Edit code** na Cloudflare e clique em **Deploy**: o GitHub não publica o Worker.
+
 Ressalvas do CallMeBot: o plano gratuito é anunciado «só para uso pessoal» e não tem garantia de entrega.
 Se as mensagens falharem com frequência, o botão reserva continua levando o contato pelo WhatsApp do
 visitante, e dá para trocar o serviço no Worker sem mexer no site.

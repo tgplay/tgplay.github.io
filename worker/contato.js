@@ -39,6 +39,10 @@ function json(body, status, origin) {
 
 const clean = (value, max) => String(value ?? "").replace(/\s+\n/g, "\n").trim().slice(0, max);
 
+// O CallMeBot quebra letras acentuadas («formulário» chega como «formul�rio»), mas mantém emojis.
+// Por isso a mensagem sai sem acentos: «formulario», «orcamento».
+const semAcento = text => text.normalize("NFD").replace(/[̀-ͯ]/g, "");
+
 export default {
   async fetch(request, env) {
     const allowed = (env.ALLOWED_ORIGINS || "https://tgplay.github.io").split(",").map(s => s.trim());
@@ -83,7 +87,7 @@ export default {
       `\n${message}`;
 
     const url = "https://api.callmebot.com/whatsapp.php?phone=" + encodeURIComponent(env.WHATSAPP_PHONE) +
-      "&text=" + encodeURIComponent(text) + "&apikey=" + encodeURIComponent(env.CALLMEBOT_APIKEY);
+      "&text=" + encodeURIComponent(semAcento(text)) + "&apikey=" + encodeURIComponent(env.CALLMEBOT_APIKEY);
 
     try {
       const res = await fetch(url);

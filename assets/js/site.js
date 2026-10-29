@@ -7,7 +7,7 @@
 
   // Endereço do Cloudflare Worker (pasta worker/) que entrega o formulário direto no WhatsApp.
   // Vazio = o formulário abre o WhatsApp do visitante com a mensagem pronta.
-  var WORKER_URL = "";
+  var WORKER_URL = "https://devspace-contato.quartorama.workers.dev/";
 
   // ── Menu do celular ──
   var btn = document.getElementById("hamburger-btn");
