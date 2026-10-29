@@ -18,6 +18,29 @@ publicado no GitHub Pages.
 
 O cabeçalho e o rodapé se repetem em cada página: uma mudança neles precisa ser feita nos quatro arquivos.
 
+## Modelo de site para restaurantes (prévias)
+
+`modelos/restaurante/` é um site de demonstração usado na prospecção: o link personaliza a prévia com o
+nome do estabelecimento.
+
+```
+https://tgplay.github.io/modelos/restaurante/?nome=Hamburgueria%20do%20Ze&tipo=hamburgueria&bairro=Pinheiros
+```
+
+| parâmetro | valores |
+|---|---|
+| `nome` | nome do estabelecimento (até 60 caracteres) |
+| `tipo` | `hamburgueria`, `pizzaria`, `restaurante` (padrão) ou `cafeteria` |
+| `bairro` | opcional |
+| `cidade` | opcional; padrão São Paulo |
+
+- **Gerar o link:** `modelos/restaurante/gerar.html` (uso interno) monta e copia o link.
+- **Sempre demonstração:** faixa amarela fixa, pratos, preços e horários ilustrativos, sem fotos do Google
+  e sem avaliações. As páginas têm `noindex`, para o nome do estabelecimento não ir parar no Google.
+- **Botões:** «Pedir pelo WhatsApp» e «iFood» só mostram um aviso de como funcionam no site final;
+  «Quero um site assim» abre o WhatsApp da devspace com o nome do estabelecimento na mensagem.
+- **Conteúdo por tipo** (cores, cardápio, horário e textos): objeto `TIPOS` em `modelos/restaurante/modelo.js`.
+
 ## Arquivos comuns
 
 | arquivo | o que faz |

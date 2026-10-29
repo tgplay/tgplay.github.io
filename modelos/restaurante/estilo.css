@@ -1,0 +1,162 @@
+/* Modelo de site para restaurantes — prévia de demonstração da devspace.
+   As cores vêm do tipo de estabelecimento (body[data-tema]). */
+
+:root {
+  --cor: #c2410c;
+  --cor-escura: #9a3412;
+  --cor-clara: #fff7ed;
+  --hero-de: #1c1917;
+  --hero-ate: #44403c;
+  --texto: #1c1917;
+  --suave: #57534e;
+  --borda: #e7e5e4;
+  --fundo: #ffffff;
+  --fundo-alt: #fafaf9;
+}
+body[data-tema="hamburgueria"] { --cor: #dc2626; --cor-escura: #b91c1c; --cor-clara: #fef2f2; --hero-de: #1f0a0a; --hero-ate: #4a1515; }
+body[data-tema="pizzaria"]     { --cor: #15803d; --cor-escura: #166534; --cor-clara: #f0fdf4; --hero-de: #052e16; --hero-ate: #3f1d0b; }
+body[data-tema="restaurante"]  { --cor: #c2410c; --cor-escura: #9a3412; --cor-clara: #fff7ed; --hero-de: #1c1917; --hero-ate: #44403c; }
+body[data-tema="cafeteria"]    { --cor: #92400e; --cor-escura: #78350f; --cor-clara: #fffbeb; --hero-de: #27150a; --hero-ate: #57361f; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--texto);
+  background: var(--fundo);
+  line-height: 1.6;
+}
+h1, h2, h3 { margin: 0; line-height: 1.2; }
+p { margin: 0 0 1em; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* Faixa de demonstração (sempre visível) */
+.demo-bar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 16px;
+  padding: 8px 16px;
+  background: #fde047; color: #422006;
+  font-size: .8125rem; text-align: center;
+}
+.demo-bar__cta {
+  background: #422006; color: #fff; text-decoration: none; font-weight: 700;
+  padding: 4px 12px; border-radius: 999px; white-space: nowrap;
+}
+
+/* Topo */
+.topo { position: sticky; top: 36px; z-index: 40; background: rgba(255,255,255,.95); backdrop-filter: blur(6px); border-bottom: 1px solid var(--borda); }
+.topo__inner { display: flex; align-items: center; gap: 20px; height: 64px; }
+.marca { font-weight: 800; font-size: 1.125rem; color: var(--texto); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.marca__emoji { margin-right: 2px; }
+.menu { display: flex; gap: 4px; margin-left: auto; }
+.menu a { color: var(--suave); text-decoration: none; font-size: .9rem; font-weight: 500; padding: 6px 10px; border-radius: 8px; }
+.menu a:hover { background: var(--cor-clara); color: var(--cor-escura); }
+@media (max-width: 720px) { .menu { display: none; } .topo .btn--pedido { margin-left: auto; } }
+
+/* Botões */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 12px 22px; border-radius: 999px; border: 2px solid transparent;
+  font: inherit; font-weight: 700; font-size: .95rem; text-decoration: none; cursor: pointer;
+  transition: transform .15s, background .15s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn--pedido { background: #16a34a; color: #fff; }
+.btn--pedido:hover { background: #15803d; }
+.topo .btn--pedido { padding: 8px 18px; font-size: .875rem; }
+.btn--claro { background: #fff; color: var(--texto); }
+.btn--linha { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
+.btn--grande { background: #16a34a; color: #fff; padding: 16px 32px; font-size: 1.05rem; }
+
+/* Hero */
+.hero {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--hero-de), var(--hero-ate));
+  color: #fff; padding: 88px 0 96px;
+}
+.hero__inner { position: relative; z-index: 1; max-width: 680px; margin-left: max(20px, calc((100% - 1100px) / 2 + 20px)); }
+.hero__tag {
+  display: inline-block; background: var(--cor); color: #fff;
+  font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 999px; margin-bottom: 18px;
+}
+.hero h1 { font-size: clamp(2.2rem, 6vw, 3.75rem); font-weight: 900; letter-spacing: -.02em; margin-bottom: 14px; overflow-wrap: anywhere; }
+.hero__slogan { font-size: 1.2rem; color: rgba(255,255,255,.85); margin-bottom: 28px; }
+.hero__acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
+.hero__local { color: rgba(255,255,255,.7); font-size: .95rem; margin: 0; }
+.hero__arte {
+  position: absolute; right: -40px; bottom: -60px; font-size: 22rem; line-height: 1;
+  opacity: .14; transform: rotate(-12deg); pointer-events: none; user-select: none;
+}
+@media (max-width: 720px) { .hero { padding: 56px 0 64px; } .hero__arte { font-size: 13rem; right: -30px; bottom: -30px; } }
+
+/* Seções */
+.secao { padding: 72px 0; }
+.secao--alt { background: var(--fundo-alt); }
+.secao h2 { font-size: 2rem; font-weight: 800; margin-bottom: 6px; }
+.secao__sub { color: var(--suave); margin-bottom: 32px; }
+.nota { margin-top: 24px; font-size: .85rem; color: var(--suave); }
+
+/* Cardápio */
+.cardapio { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (max-width: 720px) { .cardapio { grid-template-columns: 1fr; } }
+.prato {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px; border: 1px solid var(--borda); border-radius: 16px; background: #fff;
+}
+.prato__emoji {
+  flex-shrink: 0; width: 64px; height: 64px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center; font-size: 2rem;
+  background: var(--cor-clara);
+}
+.prato__info { flex: 1; min-width: 0; }
+.prato__topo { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.prato h3 { font-size: 1.05rem; font-weight: 700; }
+.prato__preco { font-weight: 800; color: var(--cor); white-space: nowrap; }
+.prato p { font-size: .9rem; color: var(--suave); margin: 4px 0 0; }
+
+/* Sobre */
+.sobre { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
+@media (max-width: 720px) { .sobre { grid-template-columns: 1fr; gap: 24px; } }
+.sobre p { color: var(--suave); font-size: 1.05rem; margin-top: 12px; }
+.diferenciais { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.diferenciais li {
+  display: flex; gap: 12px; align-items: center;
+  padding: 14px 16px; background: #fff; border: 1px solid var(--borda); border-radius: 12px; font-weight: 600;
+}
+.diferenciais li span { font-size: 1.4rem; }
+
+/* Horário e mapa */
+.duas-colunas { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+@media (max-width: 720px) { .duas-colunas { grid-template-columns: 1fr; gap: 40px; } }
+.duas-colunas h2 { margin-bottom: 20px; }
+.horario { width: 100%; border-collapse: collapse; }
+.horario td { padding: 10px 0; border-bottom: 1px solid var(--borda); }
+.horario td:last-child { text-align: right; font-weight: 600; }
+.mapa {
+  height: 240px; border-radius: 16px; border: 2px dashed var(--borda); background: var(--fundo-alt);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
+}
+.mapa span { font-size: 2.5rem; }
+.mapa p { font-weight: 700; margin: 8px 0 4px; }
+.mapa small { color: var(--suave); }
+
+/* Chamada final */
+.final { background: var(--cor-clara); padding: 72px 0; text-align: center; }
+.final h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
+.final p { max-width: 560px; margin: 0 auto 28px; color: var(--suave); font-size: 1.05rem; }
+
+/* Rodapé */
+.rodape { background: #1c1917; color: #a8a29e; text-align: center; padding: 24px 20px; font-size: .8125rem; }
+.rodape p { margin: 0; }
+.rodape a { color: #fde047; }
+
+/* Aviso dos botões de demonstração */
+.aviso {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 60;
+  max-width: calc(100% - 32px); width: 420px;
+  background: #1c1917; color: #fff; padding: 14px 18px; border-radius: 14px;
+  font-size: .9rem; box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+.aviso[hidden] { display: none; }

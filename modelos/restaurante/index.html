@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Prévia de demonstração: não indexar (o nome do restaurante vem do link e o site não é dele) -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Prévia de site | devspace</title>
+  <meta name="description" content="Prévia de demonstração de site para restaurantes, criada pela devspace.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
+  <meta property="og:title" content="Prévia do seu site | devspace">
+  <meta property="og:description" content="Veja como ficaria o site do seu restaurante: cardápio, horário, localização e pedidos pelo WhatsApp.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<div class="demo-bar" role="note">
+  <span>👀 <strong>Prévia de demonstração</strong> criada pela devspace. Pratos, preços e horários são ilustrativos.</span>
+  <a class="demo-bar__cta" id="cta-topo" href="#" target="_blank" rel="noopener">Quero um site assim</a>
+</div>
+
+<header class="topo">
+  <div class="container topo__inner">
+    <a href="#inicio" class="marca"><span class="marca__emoji" data-tipo="emoji"></span> <span data-tipo="nome"></span></a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#cardapio">Cardápio</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#horario">Horário</a>
+      <a href="#local">Como chegar</a>
+    </nav>
+    <button type="button" class="btn btn--pedido" data-demo="whatsapp">Pedir</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero__inner">
+      <p class="hero__tag" data-tipo="tag"></p>
+      <h1 data-tipo="nome"></h1>
+      <p class="hero__slogan" data-tipo="slogan"></p>
+      <div class="hero__acoes">
+        <button type="button" class="btn btn--pedido" data-demo="whatsapp">💬 Pedir pelo WhatsApp</button>
+        <button type="button" class="btn btn--claro" data-demo="ifood">🛵 Pedir no iFood</button>
+        <a class="btn btn--linha" href="#cardapio">Ver cardápio</a>
+      </div>
+      <p class="hero__local" data-tipo="local"></p>
+    </div>
+    <div class="hero__arte" aria-hidden="true" data-tipo="emoji"></div>
+  </section>
+
+  <section class="secao" id="cardapio">
+    <div class="container">
+      <h2>Cardápio</h2>
+      <p class="secao__sub">Os mais pedidos da casa</p>
+      <div class="cardapio" id="cardapio-lista"></div>
+      <p class="nota">Na versão final, o cardápio é o seu, e você pede alterações de preço e de pratos pelo WhatsApp.</p>
+    </div>
+  </section>
+
+  <section class="secao secao--alt" id="sobre">
+    <div class="container sobre">
+      <div>
+        <h2>Sobre a casa</h2>
+        <p data-tipo="sobre"></p>
+      </div>
+      <ul class="diferenciais" id="diferenciais"></ul>
+    </div>
+  </section>
+
+  <section class="secao" id="horario">
+    <div class="container duas-colunas">
+      <div>
+        <h2>Horário de funcionamento</h2>
+        <table class="horario" id="horario-tabela"></table>
+      </div>
+      <div id="local">
+        <h2>Como chegar</h2>
+        <div class="mapa" role="img" aria-label="Espaço do mapa">
+          <span>📍</span>
+          <p data-tipo="local-mapa"></p>
+          <small>Na versão final, aqui fica o mapa do Google com o seu endereço.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="container">
+      <h2>Gostou da prévia?</h2>
+      <p>Este é um exemplo de como ficaria o site <strong data-tipo="nome"></strong>. Fica pronto em até 7 dias, com o seu cardápio, as suas fotos e pedidos direto no seu WhatsApp.</p>
+      <a class="btn btn--grande" id="cta-final" href="#" target="_blank" rel="noopener">💬 Quero um site assim</a>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p>Prévia de demonstração criada pela <a href="/" target="_blank" rel="noopener">devspace</a>. Os dados são ilustrativos e este site não pertence ao estabelecimento citado.</p>
+</footer>
+
+<div class="aviso" id="aviso" role="status" hidden></div>
+
+<script src="modelo.js"></script>
+</body>
+</html>
