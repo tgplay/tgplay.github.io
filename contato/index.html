@@ -151,6 +151,11 @@
     </div>
 
     <div class="gps-form__group">
+      <label for="contato-phone">Seu WhatsApp *</label>
+      <input type="tel" id="contato-phone" name="phone" placeholder="(11) 99999-9999" required>
+    </div>
+
+    <div class="gps-form__group">
       <label for="contato-email">E-mail (opcional)</label>
       <input type="email" id="contato-email" name="email" placeholder="seu@email.com.br">
     </div>
@@ -167,10 +172,13 @@
     <div class="gps-form__feedback" hidden></div>
 
     <button type="submit" class="gps-btn gps-btn--primary gps-btn--block">
-      Enviar pelo WhatsApp &rarr;
+      Enviar mensagem &rarr;
     </button>
+    <a class="gps-btn gps-btn--ghost gps-btn--block gps-form__fallback" target="_blank" rel="noopener" hidden>
+      Enviar pelo meu WhatsApp &rarr;
+    </a>
     <p class="gps-form__privacy">
-      🔒 A mensagem é enviada pelo seu WhatsApp. Este site não guarda os seus dados.
+      🔒 Usamos seus dados só para responder a esta mensagem. Este site não guarda os seus dados.
     </p>
   </form>
 </div>

@@ -640,3 +640,5 @@ html[data-theme="dark"] .gps-form__feedback.error {
     cursor: pointer; font-family: inherit; transition: background .15s;
 }
 .dv-cookie-banner__btn:hover { background: #1d4ed8; }
+.gps-form__fallback { margin-top: 10px; }
+.gps-form__fallback[hidden] { display: none; }
