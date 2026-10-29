@@ -1,0 +1,642 @@
+/* devspace — estilos comuns do site estático.
+   Convertido do tema WordPress astra-child (devspace/painel-clientes). */
+
+/* ── Base (antes vinha do tema pai Astra) ─────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #1e293b;
+    background: #ffffff;
+}
+h1, h2, h3, h4 { margin: 0; line-height: 1.3; color: inherit; }
+p { margin: 0 0 1em; }
+img { max-width: 100%; height: auto; }
+mark { background: transparent; color: inherit; }
+
+/* Seções em largura total com conteúdo limitado a 1200px (layout "constrained" do WordPress) */
+.wp-block-group.alignfull { padding-left: 24px; padding-right: 24px; }
+.wp-block-group.alignfull > * { max-width: 1200px; margin-left: auto; margin-right: auto; }
+.has-text-align-center { text-align: center; }
+
+/* Colunas da página de contato */
+.wp-block-columns { display: flex; gap: 56px; align-items: flex-start; }
+.wp-block-column { min-width: 0; }
+@media (max-width: 781px) {
+    .wp-block-columns { flex-direction: column; gap: 32px; }
+    .wp-block-column { flex-basis: 100% !important; width: 100%; }
+}
+
+/* Páginas legais e textos longos */
+.dv-prose { max-width: 780px; }
+.dv-prose h2 { font-size: 1.25rem; margin: 32px 0 12px; }
+
+/* ── Cabeçalho e modo escuro (assets/css/header.css do tema, sem alterações) ── */
+/* ── CSS Variables ─────────────────────────────────────── */
+:root {
+    --gps-primary:       #2563eb;
+    --gps-primary-hover: #1d4ed8;
+    --gps-text:          #1e293b;
+    --gps-muted:         #64748b;
+    --gps-bg:            #ffffff;
+    --gps-border:        #e2e8f0;
+    --gps-header-h:      72px;
+    --gps-radius:        8px;
+    --gps-shadow:        0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+    --gps-shadow-lg:     0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+}
+
+/* ── Skip link ─────────────────────────────────────────── */
+.skip-link.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+    height: 1px; width: 1px;
+    overflow: hidden;
+}
+.skip-link.screen-reader-text:focus {
+    clip: auto;
+    display: block;
+    height: auto; width: auto;
+    background: var(--gps-primary);
+    color: #fff;
+    font-size: .875rem;
+    padding: 8px 16px;
+    position: fixed;
+    top: 8px; left: 8px;
+    z-index: 9999;
+    border-radius: var(--gps-radius);
+}
+
+/* ── Header Base ───────────────────────────────────────── */
+.gps-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--gps-bg);
+    border-bottom: 1px solid var(--gps-border);
+    transition: box-shadow .2s ease;
+}
+.gps-header.scrolled {
+    box-shadow: var(--gps-shadow-lg);
+}
+.gps-header__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: var(--gps-header-h);
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+/* ── Logo ──────────────────────────────────────────────── */
+.gps-header__logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+.gps-header__logo img {
+    height: 38px;
+    width: auto;
+}
+.gps-header__site-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gps-text);
+    letter-spacing: -.025em;
+    white-space: nowrap;
+}
+
+/* ── Navigation ────────────────────────────────────────── */
+.gps-header__nav {
+    flex: 1;
+}
+.gps-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.gps-menu li {
+    position: relative;
+}
+.gps-menu li a {
+    display: block;
+    padding: 8px 14px;
+    color: var(--gps-muted);
+    text-decoration: none;
+    font-size: .9rem;
+    font-weight: 500;
+    border-radius: var(--gps-radius);
+    transition: color .15s, background .15s;
+    white-space: nowrap;
+}
+.gps-menu li a:hover,
+.gps-menu li.current-menu-item > a,
+.gps-menu li.current-page-ancestor > a {
+    color: var(--gps-text);
+    background: #f1f5f9;
+}
+
+/* ── Actions ───────────────────────────────────────────── */
+.gps-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* ── Buttons ───────────────────────────────────────────── */
+.gps-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    font-size: .875rem;
+    font-weight: 600;
+    border-radius: var(--gps-radius);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    line-height: 1;
+    transition: background .15s, color .15s, border-color .15s;
+    white-space: nowrap;
+    font-family: inherit;
+}
+.gps-btn--ghost {
+    background: transparent;
+    color: var(--gps-muted);
+    border: 1.5px solid var(--gps-border);
+}
+.gps-btn--ghost:hover {
+    color: var(--gps-text);
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+.gps-btn--primary {
+    background: var(--gps-primary);
+    color: #fff !important;
+}
+.gps-btn--primary:hover {
+    background: var(--gps-primary-hover);
+}
+
+/* ── Dropdown ──────────────────────────────────────────── */
+.gps-dropdown {
+    position: relative;
+}
+.gps-dropdown__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.gps-dropdown__toggle svg:last-child {
+    transition: transform .2s ease;
+    flex-shrink: 0;
+}
+.gps-dropdown.open .gps-dropdown__toggle svg:last-child {
+    transform: rotate(180deg);
+}
+.gps-dropdown__menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 210px;
+    background: var(--gps-bg);
+    border: 1px solid var(--gps-border);
+    border-radius: var(--gps-radius);
+    box-shadow: var(--gps-shadow-lg);
+    list-style: none;
+    margin: 0;
+    padding: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity .15s ease, transform .15s ease;
+    z-index: 100;
+}
+.gps-dropdown.open .gps-dropdown__menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.gps-dropdown__menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    color: var(--gps-text);
+    text-decoration: none;
+    font-size: .875rem;
+    font-weight: 500;
+    border-radius: calc(var(--gps-radius) - 2px);
+    transition: background .12s;
+}
+.gps-dropdown__menu li a:hover {
+    background: #f1f5f9;
+}
+.gps-dropdown__menu li + li {
+    margin-top: 2px;
+}
+
+/* ── Hamburger ─────────────────────────────────────────── */
+.gps-header__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1.5px solid var(--gps-border);
+    border-radius: var(--gps-radius);
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+}
+.gps-header__hamburger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--gps-text);
+    border-radius: 2px;
+    transition: transform .2s ease, opacity .2s ease;
+}
+.gps-header__hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.gps-header__hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.gps-header__hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .gps-header__nav {
+        display: none;
+        position: absolute;
+        top: var(--gps-header-h);
+        left: 0;
+        right: 0;
+        background: var(--gps-bg);
+        border-bottom: 1px solid var(--gps-border);
+        padding: 12px 24px 20px;
+        box-shadow: var(--gps-shadow-lg);
+    }
+    .gps-header__nav.open {
+        display: block;
+    }
+    .gps-header {
+        position: relative;
+    }
+    .gps-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+    .gps-menu li a {
+        width: 100%;
+        font-size: .95rem;
+    }
+    .gps-header__hamburger {
+        display: flex;
+    }
+    .gps-header__actions .gps-btn--ghost {
+        display: none;
+    }
+    .gps-dropdown__menu {
+        right: auto;
+        left: 0;
+    }
+}
+
+/* ── Utility: reset list inside WP nav ────────────────── */
+.gps-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── CSS-only dropdown (hover + focus-within) ──────────── */
+@media (hover: hover) {
+    .gps-dropdown:hover .gps-dropdown__menu {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}
+.gps-dropdown:focus-within .gps-dropdown__menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* ── Theme Toggle Button ───────────────────────────────── */
+.gps-theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: transparent;
+    border: 1.5px solid var(--gps-border);
+    border-radius: var(--gps-radius);
+    color: var(--gps-muted);
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: color .15s, background .15s, border-color .15s;
+}
+.gps-theme-toggle:hover {
+    color: var(--gps-text);
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+.gps-theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] .gps-theme-toggle .icon-moon { display: none; }
+html[data-theme="dark"] .gps-theme-toggle .icon-sun  { display: block; }
+
+/* ── Dark Mode Variables ───────────────────────────────── */
+html[data-theme="dark"] {
+    --gps-primary:       #60a5fa;
+    --gps-primary-hover: #3b82f6;
+    --gps-text:          #e2e8f0;
+    --gps-muted:         #94a3b8;
+    --gps-bg:            #06091a;
+    --gps-border:        #1a2d46;
+    --gps-shadow:        0 1px 3px 0 rgb(0 0 0 / .6), 0 1px 2px -1px rgb(0 0 0 / .6);
+    --gps-shadow-lg:     0 10px 15px -3px rgb(0 0 0 / .7), 0 4px 6px -4px rgb(0 0 0 / .6);
+}
+
+/* ── Dark Mode: body & page ────────────────────────────── */
+body {
+    transition: background-color .25s ease, color .25s ease;
+}
+html[data-theme="dark"] body {
+    background-color: #06091a;
+    background-image: radial-gradient(ellipse at top, #0d1829 0%, #06091a 60%);
+    color: #e2e8f0;
+}
+
+/* ── Dark Mode: hardcoded color overrides ──────────────── */
+html[data-theme="dark"] .gps-menu li a:hover,
+html[data-theme="dark"] .gps-menu li.current-menu-item > a,
+html[data-theme="dark"] .gps-menu li.current-page-ancestor > a {
+    background: #0d1829;
+}
+html[data-theme="dark"] .gps-btn--ghost:hover {
+    background: #0d1829;
+    border-color: #1a2d46;
+}
+html[data-theme="dark"] .gps-dropdown__menu li a:hover {
+    background: #0d1829;
+}
+html[data-theme="dark"] .gps-theme-toggle:hover {
+    background: #0d1829;
+    border-color: #1a2d46;
+}
+html[data-theme="dark"] .gps-header__hamburger span {
+    background: var(--gps-text);
+}
+
+/* ─── DARK MODE: Site-wide overrides ──────────────────────── */
+
+/* Astra / WordPress containers */
+html[data-theme="dark"] .site,
+html[data-theme="dark"] #page,
+html[data-theme="dark"] #primary,
+html[data-theme="dark"] .site-content,
+html[data-theme="dark"] .entry-content,
+html[data-theme="dark"] .ast-container,
+html[data-theme="dark"] .wp-block-column,
+html[data-theme="dark"] .wp-block-columns {
+    background-color: transparent;
+    color: inherit;
+}
+
+/* Section backgrounds via inline styles */
+html[data-theme="dark"] [style*="background-color:#ffffff"],
+html[data-theme="dark"] [style*="background-color: #ffffff"] {
+    background-color: #0d1829 !important;
+}
+html[data-theme="dark"] [style*="background-color:#f8fafc"],
+html[data-theme="dark"] [style*="background-color: #f8fafc"],
+html[data-theme="dark"] [style*="background-color:#f1f5f9"],
+html[data-theme="dark"] [style*="background-color: #f1f5f9"] {
+    background-color: #06091a !important;
+}
+
+/* Inline text: dark shades → light */
+html[data-theme="dark"] [style*="color:#1e293b"],
+html[data-theme="dark"] [style*="color: #1e293b"],
+html[data-theme="dark"] [style*="color:#0f172a"],
+html[data-theme="dark"] [style*="color: #0f172a"] {
+    color: #e2e8f0 !important;
+}
+html[data-theme="dark"] [style*="color:#64748b"],
+html[data-theme="dark"] [style*="color: #64748b"],
+html[data-theme="dark"] [style*="color:#475569"],
+html[data-theme="dark"] [style*="color: #475569"],
+html[data-theme="dark"] [style*="color:#374151"],
+html[data-theme="dark"] [style*="color: #374151"] {
+    color: #94a3b8 !important;
+}
+
+/* Headings without inline color */
+html[data-theme="dark"] .wp-block-heading:not([style*="color:"]) {
+    color: #e2e8f0;
+}
+
+/* ── Eyebrow labels ── */
+html[data-theme="dark"] .dv-eyebrow { color: #60a5fa; }
+
+/* ── Cards: serviços home ── */
+html[data-theme="dark"] .dv-svc-card {
+    background-color: #0d1829;
+    border-color: #1a2d46;
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / .45);
+}
+html[data-theme="dark"] .dv-svc-card::after {
+    background: linear-gradient(90deg, #3b82f6, #818cf8);
+}
+html[data-theme="dark"] .dv-svc-card h3 { color: #e2e8f0; }
+html[data-theme="dark"] .dv-svc-card p  { color: #94a3b8; }
+html[data-theme="dark"] .dv-svc-card a  { color: #60a5fa; }
+html[data-theme="dark"] .dv-svc-ico     { color: #60a5fa; }
+html[data-theme="dark"] .dv-svc-n       { color: #1e3050; }
+
+/* ── Cards: diferenciais ── */
+html[data-theme="dark"] .dv-diff-item {
+    background-color: #0d1829;
+    border-color: #1a2d46;
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / .45);
+}
+html[data-theme="dark"] .dv-diff-item strong { color: #e2e8f0; }
+html[data-theme="dark"] .dv-diff-item p      { color: #94a3b8; }
+
+/* ── Cards: portfólio (home + página) ── */
+html[data-theme="dark"] .dv-port-card,
+html[data-theme="dark"] .dv-pf-card {
+    background-color: #0d1829;
+    border-color: #1a2d46;
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / .45);
+}
+html[data-theme="dark"] .dv-port-info h4,
+html[data-theme="dark"] .dv-pf-body h3  { color: #e2e8f0; }
+html[data-theme="dark"] .dv-port-info p,
+html[data-theme="dark"] .dv-pf-body p   { color: #94a3b8; }
+html[data-theme="dark"] .dv-port-techs span,
+html[data-theme="dark"] .dv-pf-techs span {
+    color: #94a3b8;
+    background-color: #06091a;
+    border-color: #1a2d46;
+}
+
+/* ── Filtros de portfólio ── */
+html[data-theme="dark"] .dv-filter {
+    background-color: #0d1829;
+    border-color: #1a2d46;
+    color: #94a3b8;
+}
+html[data-theme="dark"] .dv-filter.active {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+    color: #fff;
+}
+html[data-theme="dark"] .dv-filter:hover:not(.active) {
+    border-color: #60a5fa;
+    color: #60a5fa;
+}
+
+/* ── Página de Serviços ── */
+html[data-theme="dark"] .dv-svc-content h2  { color: #e2e8f0; }
+html[data-theme="dark"] .dv-svc-content > p { color: #94a3b8; }
+html[data-theme="dark"] .dv-feature-list li { color: #cbd5e1; }
+html[data-theme="dark"] .dv-for-whom {
+    background-color: #0d1829;
+}
+html[data-theme="dark"] .dv-for-whom strong { color: #e2e8f0; }
+html[data-theme="dark"] .dv-for-whom p      { color: #94a3b8; }
+html[data-theme="dark"] .dv-svc-badge {
+    background-color: #061428;
+    color: #60a5fa;
+}
+html[data-theme="dark"] .dv-visual-site { background: linear-gradient(135deg,#0e2546,#102f8a); }
+html[data-theme="dark"] .dv-visual-app  { background: linear-gradient(135deg,#031809,#062e15); }
+html[data-theme="dark"] .dv-visual-sys  { background: linear-gradient(135deg,#160535,#280a52); }
+
+/* ── Botão "Ver todos" portfólio ── */
+html[data-theme="dark"] .dv-port-more-btn {
+    border-color: #60a5fa;
+    color: #60a5fa !important;
+}
+html[data-theme="dark"] .dv-port-more-btn:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #fff !important;
+}
+
+/* ── Contato: channel cards ── */
+html[data-theme="dark"] .gps-ch-card {
+    background-color: #0d1829;
+    border-color: #1a2d46;
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / .45);
+}
+html[data-theme="dark"] .gps-ch-body strong { color: #e2e8f0; }
+
+/* ── Formulário de contato ── */
+html[data-theme="dark"] .gps-form__group label {
+    color: #94a3b8;
+}
+html[data-theme="dark"] .gps-form__group input,
+html[data-theme="dark"] .gps-form__group select,
+html[data-theme="dark"] .gps-form__group textarea {
+    background-color: #0d1829;
+    color: #e2e8f0;
+    border-color: #1a2d46;
+}
+html[data-theme="dark"] .gps-form__group input::placeholder,
+html[data-theme="dark"] .gps-form__group textarea::placeholder {
+    color: #3d5a7a;
+}
+html[data-theme="dark"] .gps-form__group input:focus,
+html[data-theme="dark"] .gps-form__group select:focus,
+html[data-theme="dark"] .gps-form__group textarea:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96,165,250,.2);
+}
+html[data-theme="dark"] .gps-form__feedback.success {
+    background-color: #021a0c;
+    border-color: #0d4d22;
+}
+html[data-theme="dark"] .gps-form__feedback.error {
+    background-color: #200808;
+    border-color: #6b1010;
+}
+
+/* ── Rodapé (footer.php) ───────────────────────────────── */
+.dv-footer { background: #0f172a; border-top: 1px solid #1e293b; padding: 20px 24px; text-align: center; }
+.dv-footer__inner { max-width: 1200px; margin: 0 auto; }
+.dv-footer__copy { font-size: .8125rem; color: #64748b; margin: 0; line-height: 1.5; }
+.dv-footer__copy strong { color: #94a3b8; }
+.dv-footer__copy a { color: #60a5fa; text-decoration: none; }
+.dv-footer__copy a:hover { text-decoration: underline; }
+
+/* ── Formulário de contato (contact-shortcode.php) ─────── */
+.gps-form-wrap { font-family: inherit; }
+.gps-form__group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+.gps-form__group label { font-size: .8125rem; font-weight: 600; color: #374151; letter-spacing: .01em; text-transform: uppercase; }
+.gps-form__group input,
+.gps-form__group select,
+.gps-form__group textarea {
+    padding: 11px 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: .9375rem;
+    color: #1e293b;
+    font-family: inherit;
+    background: #fff;
+    transition: border-color .15s, box-shadow .15s;
+    outline: none;
+    width: 100%;
+}
+.gps-form__group input:focus,
+.gps-form__group select:focus,
+.gps-form__group textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
+.gps-form__group textarea { resize: vertical; min-height: 120px; }
+.gps-form__group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+.gps-btn--block { width: 100%; padding: 13px; font-size: 1rem; justify-content: center; }
+.gps-form__feedback { padding: 12px 16px; border-radius: 8px; font-size: .9rem; font-weight: 500; margin-bottom: 14px; }
+.gps-form__feedback.success { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+.gps-form__feedback.error { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+.gps-form__privacy { font-size: .75rem; color: #94a3b8; text-align: center; margin: 10px 0 0; }
+
+/* ── Banner de cookies (cookie-banner.php) ─────────────── */
+.dv-cookie-banner {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    padding: 14px 24px;
+    background: #1e293b;
+    border-top: 1px solid #334155;
+    font-family: inherit;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.25);
+    animation: dvCookieSlide .3s ease;
+}
+@keyframes dvCookieSlide { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.dv-cookie-banner[hidden] { display: none !important; }
+.dv-cookie-banner__text { font-size: .875rem; color: #cbd5e1; margin: 0; line-height: 1.55; }
+.dv-cookie-banner__btn {
+    flex-shrink: 0; padding: 9px 22px; background: #2563eb; color: #fff;
+    border: none; border-radius: 8px; font-size: .875rem; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: background .15s;
+}
+.dv-cookie-banner__btn:hover { background: #1d4ed8; }
